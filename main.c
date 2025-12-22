@@ -17,15 +17,15 @@
 
 
 void test(char * mot) {
-    printf("Mot %s,", mot);
+    printf("%s\n", mot);
 }
 
 int main(int argc, char * argv[]) {
+
+    InfoMem infoMem = {0,0};
+
     FILE *fichier = lecture_fichier("data/ubu-roi.txt");
 
-    
-    fclose(fichier);
+    lecture(&infoMem, fichier, test);
 
-
-    lecture(fichier, &test);
 }

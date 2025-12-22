@@ -1,20 +1,34 @@
 #include <stdio.h>
+#include "includes/gererMem.h"
 
-void lecture(FILE * fichier, void (*func)(char *)) {
-    int word_count = 0;
+
+void lecture(InfoMem * infoMem, FILE * fichier, void (func)(char *)) {
+    char buffer[128];
     int word_length = 0;
-    char buffer[256];
+    int word_count = 0;
+    int total_char = 0;
+    int is_a_word = 1;
     char c;
 
     while ((c = fgetc(fichier)) != EOF) {
+        total_char++;
         word_length++;
-        buffer[word_length] = c;
+
         if (c == '\n' || c == '\t' || c == ' ') {
-            if (word_length > 0) {
-                word_count++;
-                printf("%s", buffer);
+
+            if (is_a_word && word_length > 1) {
+                buffer[word_length] = '\0';
+                func(buffer);
             }
+
             word_length = 0;
+            is_a_word = 1;
+            word_count++;
+
+        } else if ((c < 'a' || c > 'z')) {
+            is_a_word = 0;
+        } else if (is_a_word) {
+            buffer[word_length] = c;
         }
     }
 }
