@@ -6,38 +6,70 @@ Tree initNode(InfoMem * infoMem) {
     Tree ptr = (Tree) myMalloc(sizeof(Node), infoMem);
     ptr->droite = NULL;
     ptr->gauche = NULL;
-    ptr->occ = 0;
+    ptr->parent = NULL;
+    ptr->occ = 1;
     return ptr;
 }
 
+void saison(Node *t) {
+    // une saison casse l'ordre alphabetique
+    if (!t || !t->parent) return;
+
+    Node * p = t->parent;
+
+    if (t->occ > 2 * p->occ) {
+        t->parent = p->parent;
+
+        if (p->parent) {
+            if (p->parent->droite == p) {
+                p->parent->droite = t;
+            } else {
+                p->parent->gauche = t;
+            }
+        }
+
+
+        p->parent = t;
+
+        if (p->droite == t) {
+            p->droite = t->droite;
+            t->droite = p;
+        } else {
+            p->gauche = t->gauche;
+            t->gauche = p;
+        }
+
+
+        // il faut encore recurser (optionel)
+    }
+}
+
+
+
+
 void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
-    *arbre = initNode(infoMem);
-    (*arbre)->mot = "root";
-    (*arbre)->occ = 5;
-    
-    (*arbre)->gauche = initNode(infoMem);
-    (*arbre)->gauche->mot = "left1";
-    (*arbre)->gauche->occ = 3;
-    
-    (*arbre)->droite = initNode(infoMem);
-    (*arbre)->droite->mot = "right1";
-    (*arbre)->droite->occ = 7;
-    
-    (*arbre)->gauche->gauche = initNode(infoMem);
-    (*arbre)->gauche->gauche->mot = "left2";
-    (*arbre)->gauche->gauche->occ = 1;
-    
-    (*arbre)->gauche->droite = initNode(infoMem);
-    (*arbre)->gauche->droite->mot = "leftright";
-    (*arbre)->gauche->droite->occ = 4;
-    
-    (*arbre)->droite->gauche = initNode(infoMem);
-    (*arbre)->droite->gauche->mot = "rightleft";
-    (*arbre)->droite->gauche->occ = 6;
-    
-    (*arbre)->droite->droite = initNode(infoMem);
-    (*arbre)->droite->droite->mot = "right2";
-    (*arbre)->droite->droite->occ = 9;
+    printf("Mot : %s\n", mot);
+    Tree * t = arbre;
+    Node * par = NULL; // pour stocker le parent
+    while (*t) {
+        int res = strcmp((*t)->mot, mot);
+        par = (Node *) *t; 
+        if (res == 0) {
+            (*t)->occ++;
+            saison(*t);
+            return;
+        } else if (res > 0) {
+            t = &((*t)->gauche);
+        } else {
+            t = &((*t)->droite);
+        }
+    }
+    *t = initNode(infoMem);
+    (*t)->parent = (Node *) par;
+
+    char *copy = myMalloc((strlen(mot) + 1), infoMem);
+    strcpy(copy, mot);
+    (*t)->mot = copy;
 }
 
 
@@ -54,13 +86,13 @@ void dispTreeRec(Tree arbre, int maxDepth, int currentDepth) {
 
     printf(" {\\small (%s, %d)} \n", arbre->mot, arbre->occ);
 
-    if (arbre->gauche) {
+    if (arbre->gauche && currentDepth+1 < maxDepth) {
         printf("    child {");
         dispTreeRec(arbre->gauche, maxDepth, currentDepth+1);
         printf("}");
     }
 
-    if (arbre->droite) {
+    if (arbre->droite && currentDepth+1 < maxDepth) {
         printf("    child {");
         dispTreeRec(arbre->droite, maxDepth, currentDepth+1);
         printf("}");

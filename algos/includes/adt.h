@@ -7,6 +7,7 @@
 typedef struct _node {
     struct _node *droite;
     struct _node *gauche;
+    struct _node *parent;
     int occ;
     char * mot;
 } Node, * Tree;
