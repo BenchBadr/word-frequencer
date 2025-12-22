@@ -1,0 +1,31 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{tikz}
+
+\newcommand{\chart}[2]{\begin{tikzpicture}[smooth]
+	\draw[very thin,color=gray] (-0.1,-0.1) grid (#1 - .1, #1 - .1);
+	
+    \draw[->] (-0.2,0) -- (#1 + .2,0) node[right] {(Ko)};
+	\draw[->] (0,-0.2) -- (0, #1 + .2) node[above] {(s)};
+
+	
+	\foreach \n in {0,...,#1}{
+	    \node[below] at (\n, 0) {$\n$};
+	    \ifnum\n=0
+	    \else
+		    \node[below] at (-.2, \n) {$\n$};
+		\fi
+	}
+
+
+	
+	\draw[color=blue] plot[tension=0.5]
+    coordinates{#2};
+\end{tikzpicture}}
+\begin{document}
+
+
+\chart{5}{(0,0) (1,1) (2,2) (3,-1)}
+
+\end{document}
