@@ -16,16 +16,14 @@
 // 3. Boucle d'exécution
 
 
-void test(char * mot) {
-    printf("%s\n", mot);
-}
 
 int main(int argc, char * argv[]) {
 
     InfoMem infoMem = {0,0};
+    Tree arbre = NULL;
 
     FILE *fichier = lecture_fichier("data/ubu-roi.txt");
 
-    lecture(&infoMem, fichier, test);
-
+    lecture(&infoMem, fichier, addToTree, &arbre);
+    dispTree(arbre, 20);
 }

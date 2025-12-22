@@ -2,12 +2,17 @@
 #define ADT_ALGO
 
 #include <stdio.h>
+#include "../../util/includes/gererMem.h"
 
 typedef struct _node {
     struct _node *droite;
     struct _node *gauche;
-} Tree;
+    int occ;
+    char * mot;
+} Node, * Tree;
 
-void constructTree(Tree arbre, FILE * fichier);
+void addToTree(InfoMem * infoMem, Tree * arbre, char * mot);
+Node * initNode(InfoMem * infoMem);
+void dispTree(Tree arbre, int maxDepth);
 
 #endif

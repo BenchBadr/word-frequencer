@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "gererMem.h"
 
-void lecture(InfoMem * infoMem, FILE * fichier, void (func)(char *));
+void lecture(InfoMem * infoMem, FILE * fichier, void (func)(char *), void * adr);
 FILE * lecture_fichier(char * path);
 char remove_accent(char c);
 
