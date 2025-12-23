@@ -14,6 +14,6 @@ typedef struct _node {
 
 void addToTree(InfoMem * infoMem, Tree * arbre, char * mot);
 Node * initNode(InfoMem * infoMem);
-void dispTree(Tree arbre, int maxDepth);
+void dispTree(Tree arbre, int maxDepth, char * mot);
 
 #endif

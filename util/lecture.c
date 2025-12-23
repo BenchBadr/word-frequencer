@@ -12,7 +12,6 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
 
     while ((c = fgetc(fichier)) != EOF) {
         // total_char++;
-        word_length++;
 
         if (c == '\n' || c == '\t' || c == ' ' || c == ',') {
 
@@ -33,6 +32,7 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
             } else {
                 buffer[word_length] = c + 'a' - 'A';
             }
+            word_length++;
         }
     }
 

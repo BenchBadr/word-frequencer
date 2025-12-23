@@ -16,6 +16,10 @@
 // 3. Boucle d'exécution
 
 
+const afficher(InfoMem * infoMem, void * adr, char * mot) {
+    printf("%s", mot);
+}
+
 
 int main(int argc, char * argv[]) {
 
@@ -25,5 +29,4 @@ int main(int argc, char * argv[]) {
     FILE *fichier = lecture_fichier("data/albatros.txt");
 
     lecture(&infoMem, fichier, addToTree, &arbre);
-    dispTree(arbre, 5);
 }
