@@ -7,10 +7,22 @@
 
 
 
+
+
 // ----------------------------------------------------------------------------------------------------
 // 2. Générateur de stats
 
+void repeat(char c, int n) {
+    for (int i = 0; i < n;i++) printf("%c",c);
+    printf("\n");
+}
 
+void stats(InfoMem InfoMem) {
+    repeat('=', 50);
+    printf("Temps d'exécution : %d\n");
+    printf("Mémoire totale utilisée : %d\n");
+    printf("Mémoire totale désallouée : %d\n");
+}
 
 // ----------------------------------------------------------------------------------------------------
 // 3. Boucle d'exécution
@@ -26,7 +38,7 @@ int main(int argc, char * argv[]) {
     InfoMem infoMem = {0,0};
     Tree arbre = NULL;
 
-    FILE *fichier = lecture_fichier("data/albatros.txt");
+    FILE *fichier = lecture_fichier("data/ubu-roi.txt");
 
     lecture(&infoMem, fichier, addToTree, &arbre);
 

@@ -10,6 +10,7 @@ typedef struct _node {
     struct _node *parent;
     int occ;
     char * calque;
+    int calque_dir;
     char * mot;
 } Node, * Tree;
 

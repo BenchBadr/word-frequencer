@@ -2,7 +2,7 @@
 #include <string.h>
 #include "../util/includes/gererMem.h"
 
-#define LATEX_MODE 1
+#define LATEX_MODE 0
 
 
 
@@ -12,6 +12,7 @@ Tree initNode(InfoMem * infoMem) {
     ptr->gauche = NULL;
     ptr->parent = NULL;
     ptr->calque = NULL;
+    ptr->calque_dir = 0;
     ptr->occ = 1;
     return ptr;
 }
@@ -75,30 +76,50 @@ void saisonLegacy(Tree * arbre, Tree t)
         }
 
         // on met à jour les calques
-        t->calque = p->mot;
-        p->mot = t->calque;
+        // t->calque = strdup(p->mot);
+        // p->mot = strdup(t->calque);
 
     }
 }
 
 
 void saison(Tree * arbre, Tree t) {
+    // pour tester : naviguer entre les pages des saisons
+    int page = 0;
     while (t->parent && t->occ > t->parent->occ) {
+        // Affichage
+        if (LATEX_MODE) {
+            printf("\\chbox{\n");
+            printf("Saison : \n");
+            printf("\\textbf{« %s » (%d)} ", t->mot, t->occ);
+            printf("$\\leftrightarrow$ \\textbf{ « %s » (%d)}\n\n", t->parent->mot, t->parent->occ);
+            printf("\n}");
+        }
+
+        Tree p = t->parent;
+
+        int etaitGauche = p->droite == t;
+
+        if (t->calque_dir == 0) etaitGauche ? -1 : 1;
+
         // swap mot
         char *tmpMot = t->mot;
-        t->mot = t->parent->mot;
-        t->parent->mot = tmpMot;
+        t->mot = p->mot;
+        p->mot = tmpMot;
         
         // swap occ
         int tmpOcc = t->occ;
-        t->occ = t->parent->occ;
-        t->parent->occ = tmpOcc;
+        t->occ = p->occ;
+        p->occ = tmpOcc;
         
-        // swap calque
-        char *tmpCalque = t->calque ? t->calque : t->mot;
-        t->calque = t->parent->calque ? t->parent->calque : t->parent->mot;
-        t->parent->calque = tmpCalque;
+        // if (page == 1) {
+        //     dispTree(*arbre, 30, "test");
+        // }
+
+
+        page++;
         
+        // passons a l'iteration suivante
         t = t->parent;
     }
 }
@@ -121,10 +142,14 @@ void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
     while (*t) {
         // calque pris en compte que pour le cas d'egalité
         int res_norm = strcmp((*t)->mot, mot);
-        int res_calc = (*t)->calque ? strcmp((*t)->calque, mot) : NULL;
-        int res = res_norm == 0 ? res_norm : ((*t)->calque ? (
-            res_calc == 0 ? res_norm : res_calc
-        ) : res_norm);
+        int res_calc = strcmp((*t)->calque, mot);
+        int res;
+        res = res_norm == 0 ? res_norm : (res_calc != 0 ? (
+            res_calc
+        ) : (
+            // Cas critique
+            (*t)->calque_dir
+        ));
         par = (Node *) *t; 
         if (res == 0) {
             (*t)->occ++;
@@ -148,9 +173,10 @@ void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
     *t = initNode(infoMem);
     (*t)->parent = (Node *) par;
 
-    char *copy = myMalloc((strlen(mot) + 1), infoMem);
+    char *copy = myMalloc((strlen(mot) + 1) * sizeof(char), infoMem);
     strcpy(copy, mot);
     (*t)->mot = copy;
+    (*t)->calque = copy;
     if (LATEX_MODE) {
         dispTree(*arbre, 30, mot);
         printf("\n\\end{tcolorbox}");
@@ -179,8 +205,9 @@ void dispTreeRec(Tree arbre, int maxDepth, int currentDepth, char * mot) {
 
     printf("]\n");
 
-    printf("{($\\underset{\\text{%s}}{\\text{%s}}$, %d)} \n", 
-        arbre->calque ? arbre->calque : "", 
+    printf("{($\\underset{\\text{%s } %s}{\\text{%s}}$, %d)} \n", 
+        arbre->calque && arbre->calque != arbre->mot ? arbre->calque : "", 
+        arbre->calque_dir == -1 ? "\\searrow" : arbre->calque_dir == 1 ? "\\swarrow" : "",
         arbre->mot, 
         arbre->occ
     );
@@ -220,32 +247,10 @@ void writeTreeRec(Tree arbre, FILE *file) {
     }
     
     // IMPORTANT : À reecrire
-    Tree queue[1000];
-    int front = 0, rear = 0;
-    
-    queue[rear++] = arbre;
-    
-    while (front < rear) {
-        Tree current = queue[front++];
-        
-        fprintf(file, "%s %d\n", current->mot, current->occ);
-        
-        if (current->gauche && current->droite) {
-            if (current->gauche->occ >= current->droite->occ) {
-            queue[rear++] = current->gauche;
-            queue[rear++] = current->droite;
-            } else {
-            queue[rear++] = current->droite;
-            queue[rear++] = current->gauche;
-            }
-        } else if (current->gauche) {
-            queue[rear++] = current->gauche;
-        } else if (current->droite) {
-            queue[rear++] = current->droite;
-        }
-    }
+    fprintf(file, "%s %d\n", arbre->mot, arbre->occ);
+    writeTreeRec(arbre->gauche, file);
+    writeTreeRec(arbre->droite, file);
 }
-
 
 
 void writeTree(Tree arbre) {

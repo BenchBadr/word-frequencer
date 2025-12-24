@@ -1,3 +1,2 @@
-Pour savoir si un mot est mal orthographié, il suffit de vérifier s’il existe dans un dictionnaire, par
-contre pour suggérer une correction orthographique, il faut proposer un mot proche. Pour cela, il faut
-définir une distance entre deux mots.
+Between the 15th and 13th centuries BC, the Hittites were one of the dominant powers of the Near East, coming
+into conflict with the New Kingdom of Egypt, the Middle Assyrian Empire, and the Empire of Mitanni.
