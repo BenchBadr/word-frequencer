@@ -2,6 +2,9 @@
 #include <string.h>
 #include "../util/includes/gererMem.h"
 
+#define LATEX_MODE 1
+
+
 
 Tree initNode(InfoMem * infoMem) {
     Tree ptr = (Tree) myMalloc(sizeof(Node), infoMem);
@@ -105,12 +108,14 @@ void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
     Tree * t = arbre;
     Node * par = NULL; // pour stocker le parent
 
-    printf("\\section{« %s »}\n", mot);
-    
-    printf("\\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]\n");
-    printf("\\infbox{\n");
-    printf("Insertion de \\textbf{« %s »}", mot);
-    printf("\n}\n");
+    if (LATEX_MODE) {
+        printf("\\section{« %s »}\n", mot);
+        
+        printf("\\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]\n");
+        printf("\\infbox{\n");
+        printf("Insertion de \\textbf{« %s »}", mot);
+        printf("\n}\n");
+    }
 
 
     while (*t) {
@@ -125,9 +130,13 @@ void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
             (*t)->occ++;
 
             // faire une saison
-            dispTree(*arbre, 30, mot);
+            if (LATEX_MODE) {
+                dispTree(*arbre, 30, mot);
+            }
             saison(arbre, *t);
-            printf("\n\\end{tcolorbox}\n");
+            if (LATEX_MODE) {
+                printf("\n\\end{tcolorbox}\n");
+            }
 
             return;
         } else if (res > 0) {
@@ -142,8 +151,10 @@ void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
     char *copy = myMalloc((strlen(mot) + 1), infoMem);
     strcpy(copy, mot);
     (*t)->mot = copy;
-    dispTree(*arbre, 30, mot);
-    printf("\n\\end{tcolorbox}");
+    if (LATEX_MODE) {
+        dispTree(*arbre, 30, mot);
+        printf("\n\\end{tcolorbox}");
+    }
 }
 
 
@@ -162,7 +173,10 @@ void dispTreeRec(Tree arbre, int maxDepth, int currentDepth, char * mot) {
     if (strcmp(arbre->mot, mot) == 0) {
         printf("fill=yellow");
     }
-    printf(", scale=%.2f", 1.0f - ((float)currentDepth / (float)maxDepth));
+    if (maxDepth > 5) {
+        printf(", scale=%.2f", 1.0f - ((float)currentDepth / (float)maxDepth));
+    }
+
     printf("]\n");
 
     printf("{($\\underset{\\text{%s}}{\\text{%s}}$, %d)} \n", 
@@ -190,7 +204,7 @@ void dispTree(Tree arbre, int maxDepth, char * mot){
     printf("\\begin{tikzpicture}\n");
     printf("[\n");
     printf("    level 1/.style={sibling distance=75mm, scale=1},\n");
-    printf("    level/.style={sibling distance=35mm, scale=.95},\n");
+    printf("    level/.style={sibling distance=45mm, scale=1},\n");
     printf("]\n");
 
     dispTreeRec(arbre, maxDepth, 0, mot);
@@ -198,4 +212,47 @@ void dispTree(Tree arbre, int maxDepth, char * mot){
     printf(";\n\\end{tikzpicture}\n");
     printf("}\n");
     printf("\\end{center}\n");
+}
+
+void writeTreeRec(Tree arbre, FILE *file) {
+    if (!arbre) {
+        return;
+    }
+    
+    // IMPORTANT : À reecrire
+    Tree queue[1000];
+    int front = 0, rear = 0;
+    
+    queue[rear++] = arbre;
+    
+    while (front < rear) {
+        Tree current = queue[front++];
+        
+        fprintf(file, "%s %d\n", current->mot, current->occ);
+        
+        if (current->gauche && current->droite) {
+            if (current->gauche->occ >= current->droite->occ) {
+            queue[rear++] = current->gauche;
+            queue[rear++] = current->droite;
+            } else {
+            queue[rear++] = current->droite;
+            queue[rear++] = current->gauche;
+            }
+        } else if (current->gauche) {
+            queue[rear++] = current->gauche;
+        } else if (current->droite) {
+            queue[rear++] = current->droite;
+        }
+    }
+}
+
+
+
+void writeTree(Tree arbre) {
+    FILE *file = fopen("out.txt", "w");
+    if (!file) {
+        return;
+    }
+    writeTreeRec(arbre, file);
+    fclose(file);
 }

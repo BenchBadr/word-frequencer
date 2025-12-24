@@ -29,4 +29,6 @@ int main(int argc, char * argv[]) {
     FILE *fichier = lecture_fichier("data/albatros.txt");
 
     lecture(&infoMem, fichier, addToTree, &arbre);
+
+    writeTree(arbre);
 }
