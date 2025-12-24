@@ -1,4 +1,4 @@
-\subsection{« between »}
+\section{« between »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« between »}
@@ -7,16 +7,17 @@ Insertion de \textbf{« between »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node {\bfseries (between, 1)} 
+\node [fill=yellow, scale=1.00]
+{($\underset{\text{}}{\text{between}}$, 1)} 
 ;
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« the »}
+\end{tcolorbox}\section{« the »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« the »}
@@ -25,17 +26,19 @@ Insertion de \textbf{« the »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{\bfseries (the, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{}}{\text{between}}$, 1)} 
+    child {node[fill=yellow, scale=0.97]
+{($\underset{\text{}}{\text{the}}$, 1)} 
 };
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« and »}
+\end{tcolorbox}\section{« and »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« and »}
@@ -44,18 +47,21 @@ Insertion de \textbf{« and »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{\bfseries (and, 1)} 
-}    child {node{ (the, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{}}{\text{between}}$, 1)} 
+    child {node[fill=yellow, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+}    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{the}}$, 1)} 
 };
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« centuries »}
+\end{tcolorbox}\section{« centuries »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« centuries »}
@@ -64,19 +70,23 @@ Insertion de \textbf{« centuries »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{ (and, 1)} 
-}    child {node{ (the, 1)} 
-    child {node{\bfseries (centuries, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{}}{\text{between}}$, 1)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+}    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{the}}$, 1)} 
+    child {node[fill=yellow, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
 }};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« bc »}
+\end{tcolorbox}\section{« bc »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« bc »}
@@ -85,20 +95,25 @@ Insertion de \textbf{« bc »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{\bfseries (bc, 1)} 
-}}    child {node{ (the, 1)} 
-    child {node{ (centuries, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{}}{\text{between}}$, 1)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[fill=yellow, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{the}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
 }};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« the »}
+\end{tcolorbox}\section{« the »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« the »}
@@ -107,21 +122,26 @@ Insertion de \textbf{« the »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{\bfseries (the, 2)} 
-    child {node{ (centuries, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{}}{\text{between}}$, 1)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[fill=yellow, scale=0.97]
+{($\underset{\text{}}{\text{the}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
 }};
 \end{tikzpicture}
 }
 \end{center}
 
 \end{tcolorbox}
-\subsection{« hittites »}
+\section{« hittites »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« hittites »}
@@ -130,21 +150,27 @@ Insertion de \textbf{« hittites »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (the, 2)} 
-    child {node{ (centuries, 1)} 
-    child {node{\bfseries (hittites, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 2)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
+    child {node[fill=yellow, scale=0.90]
+{($\underset{\text{}}{\text{hittites}}$, 1)} 
 }}};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« were »}
+\end{tcolorbox}\section{« were »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« were »}
@@ -153,22 +179,29 @@ Insertion de \textbf{« were »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (the, 2)} 
-    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-}}    child {node{\bfseries (were, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 2)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{hittites}}$, 1)} 
+}}    child {node[fill=yellow, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
 }};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« one »}
+\end{tcolorbox}\section{« one »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« one »}
@@ -177,23 +210,31 @@ Insertion de \textbf{« one »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (the, 2)} 
-    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{\bfseries (one, 1)} 
-}}}    child {node{ (were, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 2)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{hittites}}$, 1)} 
+    child {node[fill=yellow, scale=0.87]
+{($\underset{\text{}}{\text{one}}$, 1)} 
+}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
 }};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« of »}
+\end{tcolorbox}\section{« of »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« of »}
@@ -202,24 +243,33 @@ Insertion de \textbf{« of »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (the, 2)} 
-    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (one, 1)} 
-    child {node{\bfseries (of, 1)} 
-}}}}    child {node{ (were, 1)} 
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 2)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{one}}$, 1)} 
+    child {node[fill=yellow, scale=0.83]
+{($\underset{\text{}}{\text{of}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
 }};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« the »}
+\end{tcolorbox}\section{« the »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« the »}
@@ -228,30 +278,34 @@ Insertion de \textbf{« the »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{\bfseries (the, 3)} 
-    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (one, 1)} 
-    child {node{ (of, 1)} 
-}}}}    child {node{ (were, 1)} 
+\node [fill=yellow, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 3)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{one}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{of}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
 }};
 \end{tikzpicture}
 }
 \end{center}
-\chbox{
-Il faut échanger : 
-\textbf{« the » (3)} $\leftrightarrow$ \textbf{« between » (1)}
 
-
-}
 \end{tcolorbox}
-\subsection{« dominant »}
+\section{« dominant »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« dominant »}
@@ -260,24 +314,35 @@ Insertion de \textbf{« dominant »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 3)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{\bfseries (dominant, 1)} 
-}    child {node{ (one, 1)} 
-    child {node{ (of, 1)} 
-}}}}};
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 3)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{hittites}}$, 1)} 
+    child {node[fill=yellow, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{one}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{of}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« powers »}
+\end{tcolorbox}\section{« powers »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« powers »}
@@ -286,25 +351,37 @@ Insertion de \textbf{« powers »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 3)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-}    child {node{ (one, 1)} 
-    child {node{ (of, 1)} 
-}    child {node{\bfseries (powers, 1)} 
-}}}}};
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 3)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{one}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{of}}$, 1)} 
+}    child {node[fill=yellow, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« of »}
+\end{tcolorbox}\section{« of »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« of »}
@@ -313,26 +390,38 @@ Insertion de \textbf{« of »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 3)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-}    child {node{ (one, 1)} 
-    child {node{\bfseries (of, 2)} 
-}    child {node{ (powers, 1)} 
-}}}}};
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 3)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{one}}$, 1)} 
+    child {node[fill=yellow, scale=0.83]
+{($\underset{\text{}}{\text{of}}$, 2)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
 \end{tcolorbox}
-\subsection{« the »}
+\section{« the »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« the »}
@@ -341,26 +430,38 @@ Insertion de \textbf{« the »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node {\bfseries (the, 4)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-}    child {node{ (one, 1)} 
-    child {node{ (of, 2)} 
-}    child {node{ (powers, 1)} 
-}}}}};
+\node [fill=yellow, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 4)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
 \end{tcolorbox}
-\subsection{« near »}
+\section{« near »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« near »}
@@ -369,26 +470,39 @@ Insertion de \textbf{« near »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 4)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-}    child {node{ (one, 1)} 
-    child {node{ (of, 2)} 
-    child {node{\bfseries (near, 1)} 
-}}    child {node{ (powers, 1)} 
-}}}}};
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 4)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[fill=yellow, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« east »}
+\end{tcolorbox}\section{« east »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« east »}
@@ -397,27 +511,41 @@ Insertion de \textbf{« east »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 4)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-    child {node{\bfseries (east, 1)} 
-}}    child {node{ (one, 1)} 
-    child {node{ (of, 2)} 
-    child {node{ (near, 1)} 
-}}    child {node{ (powers, 1)} 
-}}}}};
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 4)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[fill=yellow, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« coming »}
+\end{tcolorbox}\section{« coming »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« coming »}
@@ -426,28 +554,43 @@ Insertion de \textbf{« coming »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 4)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-    child {node{\bfseries (coming, 1)} 
-}    child {node{ (east, 1)} 
-}}    child {node{ (one, 1)} 
-    child {node{ (of, 2)} 
-    child {node{ (near, 1)} 
-}}    child {node{ (powers, 1)} 
-}}}}};
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 4)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[fill=yellow, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+}}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« into »}
+\end{tcolorbox}\section{« into »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« into »}
@@ -456,29 +599,45 @@ Insertion de \textbf{« into »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 4)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-    child {node{ (coming, 1)} 
-}    child {node{ (east, 1)} 
-}}    child {node{ (one, 1)} 
-    child {node{ (of, 2)} 
-    child {node{ (near, 1)} 
-    child {node{\bfseries (into, 1)} 
-}}}    child {node{ (powers, 1)} 
-}}}}};
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 4)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+}    child {node[fill=yellow, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+}}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« conflict »}
+\end{tcolorbox}\section{« conflict »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« conflict »}
@@ -487,30 +646,47 @@ Insertion de \textbf{« conflict »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 4)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-    child {node{ (coming, 1)} 
-    child {node{\bfseries (conflict, 1)} 
-}}    child {node{ (east, 1)} 
-}}    child {node{ (one, 1)} 
-    child {node{ (of, 2)} 
-    child {node{ (near, 1)} 
-    child {node{ (into, 1)} 
-}}}    child {node{ (powers, 1)} 
-}}}}};
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 4)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[fill=yellow, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+}}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+}};
 \end{tikzpicture}
 }
 \end{center}
 
-\end{tcolorbox}\subsection{« with »}
+\end{tcolorbox}\section{« with »}
 \begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
 \infbox{
 Insertion de \textbf{« with »}
@@ -519,20 +695,815 @@ Insertion de \textbf{« with »}
 \tbox{
 \begin{tikzpicture}
 [
-    level 1/.style={sibling distance=75mm},
-    level 2/.style={sibling distance=35mm},
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
 ]
-\node { (the, 4)} 
-    child {node{ (between, 1)} 
-    child {node{ (and, 1)} 
-    child {node{ (bc, 1)} 
-}}    child {node{ (centuries, 1)} 
-    child {node{ (hittites, 1)} 
-    child {node{ (dominant, 1)} 
-    child {node{ (coming, 1)} 
-    child {node{ (conflict, 1)} 
-}}    child {node{ (east, 1)} 
-}}    child {node{ (one, 1)} 
-    child {node{ (of, 2)} 
-    child {node{ (near, 1)} 
-    child
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 4)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+}}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[fill=yellow, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}\section{« the »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« the »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [fill=yellow, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 5)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+}}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}
+\section{« new »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« new »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 5)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+}}    child {node[fill=yellow, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}\section{« kingdom »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« kingdom »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 5)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[fill=yellow, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}\section{« of »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« of »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 5)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[fill=yellow, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}
+\section{« egypt »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« egypt »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 5)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[fill=yellow, scale=0.80]
+{($\underset{\text{}}{\text{egypt}}$, 1)} 
+}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}\section{« the »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« the »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [fill=yellow, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 6)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{egypt}}$, 1)} 
+}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}
+\section{« middle »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« middle »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 6)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{egypt}}$, 1)} 
+}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+    child {node[fill=yellow, scale=0.77]
+{($\underset{\text{}}{\text{middle}}$, 1)} 
+}}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}\section{« assyrian »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« assyrian »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 6)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+    child {node[fill=yellow, scale=0.90]
+{($\underset{\text{}}{\text{assyrian}}$, 1)} 
+}}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{egypt}}$, 1)} 
+}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{}}{\text{middle}}$, 1)} 
+}}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}\section{« empire »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« empire »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 6)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 1)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{assyrian}}$, 1)} 
+}}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{egypt}}$, 1)} 
+    child {node[fill=yellow, scale=0.77]
+{($\underset{\text{}}{\text{empire}}$, 1)} 
+}}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{}}{\text{middle}}$, 1)} 
+}}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}\section{« and »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« and »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 6)} 
+    child {node[fill=yellow, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{assyrian}}$, 1)} 
+}}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{egypt}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{}}{\text{empire}}$, 1)} 
+}}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{}}{\text{middle}}$, 1)} 
+}}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}
+\section{« the »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« the »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [fill=yellow, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 7)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{assyrian}}$, 1)} 
+}}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{egypt}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{}}{\text{empire}}$, 1)} 
+}}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{}}{\text{middle}}$, 1)} 
+}}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}
+\section{« empire »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« empire »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 7)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{assyrian}}$, 1)} 
+}}}    child {node[, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 3)} 
+    child {node[, scale=0.93]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{near}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{east}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{into}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{egypt}}$, 1)} 
+    child {node[fill=yellow, scale=0.77]
+{($\underset{\text{}}{\text{empire}}$, 2)} 
+}}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{}}{\text{middle}}$, 1)} 
+}}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}
+\section{« of »}
+\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]
+\infbox{
+Insertion de \textbf{« of »}
+}
+\begin{center}
+\tbox{
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=75mm, scale=1},
+    level/.style={sibling distance=35mm, scale=.95},
+]
+\node [, scale=1.00]
+{($\underset{\text{between}}{\text{the}}$, 7)} 
+    child {node[, scale=0.97]
+{($\underset{\text{}}{\text{and}}$, 2)} 
+    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{bc}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{assyrian}}$, 1)} 
+}}}    child {node[fill=yellow, scale=0.97]
+{($\underset{\text{one}}{\text{of}}$, 4)} 
+    child {node[, scale=0.93]
+{($\underset{\text{egypt}}{\text{empire}}$, 2)} 
+    child {node[, scale=0.90]
+{($\underset{\text{the}}{\text{between}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{empire}}{\text{near}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{coming}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{conflict}}$, 1)} 
+}}    child {node[, scale=0.83]
+{($\underset{\text{empire}}{\text{east}}$, 1)} 
+    child {node[, scale=0.80]
+{($\underset{\text{empire}}{\text{into}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{empire}}{\text{egypt}}$, 1)} 
+}}    child {node[, scale=0.80]
+{($\underset{\text{}}{\text{kingdom}}$, 1)} 
+    child {node[, scale=0.77]
+{($\underset{\text{}}{\text{middle}}$, 1)} 
+}}}}    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{new}}$, 1)} 
+}}    child {node[, scale=0.90]
+{($\underset{\text{of}}{\text{centuries}}$, 1)} 
+    child {node[, scale=0.87]
+{($\underset{\text{}}{\text{dominant}}$, 1)} 
+}    child {node[, scale=0.87]
+{($\underset{\text{of}}{\text{hittites}}$, 1)} 
+    child {node[, scale=0.83]
+{($\underset{\text{of}}{\text{one}}$, 1)} 
+}    child {node[, scale=0.83]
+{($\underset{\text{}}{\text{powers}}$, 1)} 
+}}}}    child {node[, scale=0.93]
+{($\underset{\text{}}{\text{were}}$, 1)} 
+    child {node[, scale=0.90]
+{($\underset{\text{}}{\text{with}}$, 1)} 
+}}};
+\end{tikzpicture}
+}
+\end{center}
+
+\end{tcolorbox}
