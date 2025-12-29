@@ -2,7 +2,9 @@
 #include <string.h>
 #include "../util/includes/gererMem.h"
 
-#define LATEX_MODE 0
+#ifndef LATEX_MODE
+    #define LATEX_MODE 0
+#endif
 
 
 
@@ -14,6 +16,7 @@ Tree initNode(InfoMem * infoMem) {
     ptr->calque = NULL;
     ptr->calque_dir = 0;
     ptr->occ = 1;
+    infoMem->nbMotsDist++;
     return ptr;
 }
 
@@ -62,8 +65,7 @@ void saisonLegacy(Tree * arbre, Tree t)
         }
 
         // on insere fils de t dans ex-parent
-        int etaitGauche = p->droite == t;
-        if (!etaitGauche) {
+        if (p->droite != t) {
             p->gauche = tmp;
             if (tmp) {
                 tmp->parent = p;
@@ -98,9 +100,7 @@ void saison(Tree * arbre, Tree t) {
 
         Tree p = t->parent;
 
-        int etaitGauche = p->droite == t;
-
-        if (t->calque_dir == 0) etaitGauche ? -1 : 1;
+        // int etaitGauche = p->droite == t;
 
         // swap mot
         char *tmpMot = t->mot;
@@ -112,9 +112,9 @@ void saison(Tree * arbre, Tree t) {
         t->occ = p->occ;
         p->occ = tmpOcc;
         
-        // if (page == 1) {
-        //     dispTree(*arbre, 30, "test");
-        // }
+        if (page < 0) {
+            dispTree(*arbre, 30, "test");
+        }
 
 
         page++;
@@ -241,23 +241,90 @@ void dispTree(Tree arbre, int maxDepth, char * mot){
     printf("\\end{center}\n");
 }
 
-void writeTreeRec(Tree arbre, FILE *file) {
-    if (!arbre) {
-        return;
+
+void swapIfNeeded(Tree *array, int index) {
+    while (index > 0 && array[index]->occ > array[index - 1]->occ) {
+        Tree temp = array[index];
+        array[index] = array[index - 1];
+        array[index - 1] = temp;
+        index--;
     }
-    
-    // IMPORTANT : À reecrire
-    fprintf(file, "%s %d\n", arbre->mot, arbre->occ);
-    writeTreeRec(arbre->gauche, file);
-    writeTreeRec(arbre->droite, file);
 }
 
-
-void writeTree(Tree arbre) {
+void writeTree(Tree arbre, InfoMem * infoMem) {
     FILE *file = fopen("out.txt", "w");
-    if (!file) {
-        return;
+    if (!file || !arbre) return;
+
+    // file d'attente
+    // idee : DFS en gommant les noeuds selon l'ordre 
+    // FAIRE UN DESSIN
+    Tree * primaire = myMalloc(sizeof(Tree) * infoMem->nbMots, infoMem); 
+    Tree * secondaire = myMalloc(sizeof(Tree) * infoMem->nbMots, infoMem); 
+    int i = 0;
+    int prim_length = 1;
+    int i2 = 0;
+    int sec_length = 0;
+    primaire[0] = arbre;
+
+
+    while (i < prim_length || i2 < sec_length) {
+        
+        // on "depile" selon le sous arbre
+        Tree tmp;
+        if (primaire[i] && (!secondaire[i2] || primaire[i]->occ >= secondaire[i2]->occ)) {
+            // depile primaire 
+            tmp = primaire[i];
+            i++;
+        } else {
+            if (secondaire[i2] && (!primaire[i] || secondaire[i2]->occ > primaire[i]->occ)) {
+                // depile secondaire
+                tmp = secondaire[i2];
+                i2++;
+            } else {
+                // depile primaire (pas d'adversaire)
+                tmp = primaire[i];
+                i++;
+            }
+        }
+
+        fprintf(file, "%s %d\n", tmp->mot, tmp->occ);
+        
+        // on traite les fils
+        if (!tmp->gauche && !tmp->droite) {
+            continue;
+        }
+
+
+
+        if (tmp->droite && (!tmp->gauche || tmp->droite->occ > tmp->gauche->occ)) {
+
+            primaire[prim_length] = tmp->droite;
+            swapIfNeeded(primaire, prim_length);
+            prim_length++;
+
+            // ajout primaire
+
+            if (tmp->gauche) {
+                secondaire[sec_length] = tmp->gauche;
+                swapIfNeeded(secondaire, sec_length);
+                sec_length++;
+            }
+        } else {
+            // ajout secondaire
+            primaire[prim_length] = tmp->gauche;
+            swapIfNeeded(primaire, prim_length);
+            prim_length++;
+
+            if (tmp->droite) {
+                secondaire[sec_length] = tmp->droite;
+                swapIfNeeded(secondaire, sec_length);
+                sec_length++;
+            }
+        }
+
     }
-    writeTreeRec(arbre, file);
+
+    // myFree(primaire, sizeof(Tree), infoMem);
+    // myFree(secondaire, sizeof(Tree), infoMem);
     fclose(file);
 }

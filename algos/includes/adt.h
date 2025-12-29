@@ -18,6 +18,6 @@ void addToTree(InfoMem * infoMem, Tree * arbre, char * mot);
 Node * initNode(InfoMem * infoMem);
 void dispTree(Tree arbre, int maxDepth, char * mot);
 
-void writeTree(Tree arbre);
+void writeTree(Tree arbre, InfoMem * infoMem);
 
 #endif

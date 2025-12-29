@@ -15,9 +15,10 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
 
         if ((c < 'A' && c > 'z') || c == '\n' || c == '\t' || c == ' ' || c == ',') {
 
-            if (is_a_word && word_length > 1) {
+            if (is_a_word && word_length > 0) {
                 buffer[word_length] = '\0';
                 func(infoMem, adr, buffer);
+                infoMem->nbMots++;
             }
 
             word_length = 0;
@@ -25,6 +26,12 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
             // word_count++;
 
         } else if ((c < 'A' || c > 'z')) {
+            if (is_a_word && word_length > 0) {
+            buffer[word_length] = '\0';
+            func(infoMem, adr, buffer);
+            infoMem->nbMots++;
+            }
+            word_length = 0;
             is_a_word = 0;
         } else if (is_a_word) {
             if (c >= 'a') {
@@ -41,6 +48,7 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
         word_length++;
         buffer[word_length] = '\0';
         func(infoMem, adr, buffer);
+        infoMem->nbMots++;
     }
 
 }

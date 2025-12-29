@@ -3,11 +3,11 @@
 \usepackage[french]{babel}
 \usepackage{tikz}
 
-\newcommand{\chart}[2]{\begin{tikzpicture}[smooth]
+\newcommand{\chart}[4]{\begin{tikzpicture}[smooth]
 	\draw[very thin,color=gray] (-0.1,-0.1) grid (#1 - .1, #1 - .1);
 	
-    \draw[->] (-0.2,0) -- (#1 + .2,0) node[right] {(Ko)};
-	\draw[->] (0,-0.2) -- (0, #1 + .2) node[above] {(s)};
+    \draw[->] (-0.2,0) -- (#1 + .2,0) node[right] {#3};
+	\draw[->] (0,-0.2) -- (0, #1 + .2) node[above] {#4};
 
 	
 	\foreach \n in {0,...,#1}{
