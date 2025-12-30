@@ -54,7 +54,7 @@ void grapher(int dim, int option) {
         0 : Temps / mots
         1 : Memoire / mots
     */
-    FILE *fichier = lecture_fichier("data/albatros.txt");
+    FILE *fichier = lecture_fichier("data/sample.txt");
 
 
     printf("\\newpage\n\\ \n");
@@ -73,11 +73,17 @@ void grapher(int dim, int option) {
             if (APPROCHE == 3) {
                 lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToTree, &adr);
             }
+            if (APPROCHE == 2) {
+                lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToListe, &adr);
+            }
             rewind(fichier);
         }
 
         if (APPROCHE == 3) {
             writeTree(adr, &infoMem); 
+        }
+        if (APPROCHE == 2) {
+            fusionAldi(&infoMem, (Liste) adr);
         }
         if (i == 0) {
             ratioer = infoMem.max_alloc;
@@ -108,14 +114,32 @@ void afficher(InfoMem * infoMem, void * adr, char * mot) {
 
 int main(int argc, char * argv[]) {
 
-    InfoMem infoMem = {0,0, clock(), 0, 0};
-    Tree liste = NULL;
-
-    FILE *fichier = lecture_fichier("data/hittites.txt");
-
-    lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToTree, &liste);
-
-    stats(infoMem);
     // grapher(5, 0);
     // grapher(5, 1);
+
+    // return;
+
+    InfoMem infoMem = {0,0, clock(), 0, 0};
+    FILE *fichier = lecture_fichier("data/hittites.txt");
+
+
+    if (APPROCHE == 2) {
+        printf("\\section{Approche : ALDI}\n\n\n");
+        Liste liste = NULL;
+
+        lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToListe, &liste);
+
+        fusionAldi(&infoMem, liste);
+    } 
+
+    if (APPROCHE == 3) {
+        printf("\\section{Approche : ADT}\n\n\n");
+        Tree arbre = NULL;
+        lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToTree, &arbre);
+
+        writeTree(arbre, &infoMem);
+
+    }
+
+    stats(infoMem);
 }

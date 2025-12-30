@@ -12,6 +12,7 @@ typedef struct lc {
 } Cellule, * Liste;
 
 void addToListe(InfoMem * infoMem, Liste * liste, char * mot);
+void fusionAldi(InfoMem * infoMem, Liste liste);
 Cellule * initCellule(InfoMem * infoMem);
 
 #endif

@@ -1,0 +1,127 @@
+\documentclass[a4paper, 16pt]{article}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}  % required
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{lmodern}
+
+\geometry{margin=1.5cm}
+\newcommand{\chbox}[1]{
+\begin{tcolorbox}[
+ colback=green!10,
+ colframe=green!50!black,
+ boxrule=0.5pt,
+ arc=4pt
+]
+#1
+\end{tcolorbox}
+}
+
+\newcommand{\infbox}[1]{
+\begin{tcolorbox}[
+ colback=cyan!10,
+ colframe=cyan!50!black,
+ boxrule=0.5pt,
+ arc=4pt
+]
+#1
+\end{tcolorbox}
+}
+
+
+\newcommand{\tbox}[1]{
+\begin{tcolorbox}[
+ colback=gray!0,
+ colframe=gray!50!black,
+ boxrule=0.5pt,
+ arc=4pt
+]
+\begin{center}
+#1
+\end{center}
+\end{tcolorbox}
+}
+
+
+\newcommand{\circliste}[1]{
+  \begin{tikzpicture}[every node/.style={draw, circle, minimum size=1cm, font=\small, inner sep=2pt}]
+    
+    % Calcul longueur
+    \foreach \word [count=\n] in {#1} {
+      \global\let\total\n
+    }
+    
+    % Calcul rayon
+    \pgfmathsetmacro{\radius}{6}
+    
+    % Placement noeuds
+    \foreach \word [count=\i] in {#1} {
+      \pgfmathsetmacro{\angle}{90 - (\i-1)*360/\total}
+      \ifnum\i=1
+        \node[draw=red, thick] (\i) at (\angle:\radius cm) {\word};
+      \else
+        \node (\i) at (\angle:\radius cm) {\word};
+      \fi
+    }
+    
+    % Dessin fleches
+    \pgfmathtruncatemacro{\lastnode}{\total}
+    \foreach \i in {1,...,\lastnode} {
+      \pgfmathtruncatemacro{\next}{mod(\i,\total)+1}
+      \draw[<->, shorten >=2pt, shorten <=2pt] (\i) to[bend right=25] (\next);
+    }
+  \end{tikzpicture}
+}
+
+
+\newcommand{\linliste}[1]{
+  \begin{tikzpicture}[every node/.style={draw, circle, minimum size=1cm, font=\small, inner sep=2pt}]
+
+    % max par ligne
+    \pgfmathsetmacro{\rowsize}{6}
+    
+    % Calcul longueur
+      \foreach \word [count=\n] in {#1} {
+        \global\let\total\n
+      }
+      
+      % Placement noeuds
+      \foreach \word [count=\i] in {#1} {
+        \pgfmathsetmacro{\quot}{-floor((\i-1)/\rowsize)}
+        \pgfmathsetmacro{\xpos}{.9 * (1+pow(-1, \quot+1))*\rowsize + pow(-1, \quot) * mod(\i-1, \rowsize)*2}
+        \pgfmathsetmacro{\ypos}{\quot*2}
+        \node[scale=1] (\i) at (\xpos, \ypos) {\word};
+      }
+      
+      % Dessin fleches
+      \pgfmathtruncatemacro{\lastnode}{\total}
+      \foreach \i in {1,...,\lastnode} {
+        \pgfmathtruncatemacro{\next}{mod(\i,\total)+1}
+        \ifnum\i<\lastnode
+        \draw[<->, shorten >=2pt, shorten <=2pt] (\i) to (\next);
+        \fi
+      }
+  \end{tikzpicture}
+}
+
+\begin{document}
+
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{.3cm}
+\noindent \textbf{Badr Benchekroun, Jade Ziani} \hfill \textbf{Université Gustave Eiffel} \\
+\textbf{Initiation à la Prog C} \hfill \textbf{L2, 3ème semestre} \\
+\begin{center}
+\textbf{\Large Visualisation de l'ALDI} \\ 
+\vspace{.2cm}
+\textit{\large Algorithme d'insertion triée dans des listes circulaires}
+\end{center}
+\vspace{.2cm}
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{.5cm}
+
+Between the 15th and 13th centuries BC, the Hittites were one of the dominant powers of the Near East, coming into conflict with the New Kingdom of Egypt, the Middle Assyrian Empire, and the Empire of Mitanni. 
+\input{out.tex}
+\end{document}
