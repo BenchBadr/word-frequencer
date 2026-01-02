@@ -3,26 +3,35 @@
 \usepackage[french]{babel}
 \usepackage{tikz}
 
-\newcommand{\chart}[4]{\begin{tikzpicture}[smooth]
-	\draw[very thin,color=gray] (-0.1,-0.1) grid (#1 - .1, #1 - .1);
-	
-    \draw[->] (-0.2,0) -- (#1 + .2,0) node[right] {#3};
-	\draw[->] (0,-0.2) -- (0, #1 + .2) node[above] {#4};
-
-	
-	\foreach \n in {0,...,#1}{
-	    \node[below] at (\n, 0) {$\n$};
-	    \ifnum\n=0
-	    \else
-		    \node[below] at (-.2, \n) {$\n$};
-		\fi
-	}
+\newcommand{\chart}[4]{
+\begin{tikzpicture}[smooth,scale=1]
+    
+  
+    % reglages 
+    \def\taille{5} % taille de la grille en cm
 
 
-	
-	\draw[color=blue] plot[tension=0.5]
-    coordinates{#2};
+    % Grille
+    \draw[very thin,color=gray!30, scale=5/#1] (0,0) grid (#1,#1);
+
+    % Axes
+    \draw[->] (0,0) -- (\taille+0.2,0) node[right]{#3};
+    \draw[->] (0,0) -- (0,\taille+0.2) node[above]{#4};
+
+    % graduations
+    \foreach \n in {0,...,5}{
+        \pgfmathsetmacro\N{int(\n * #1/\taille)}
+        \node[below] at (\n, 0) {$\N$};
+        \ifnum\n=0
+        \else
+            \node[anchor=center] at (-.4, \n) {$\N$};
+      \fi
+    }
+
+    % Courbe
+    \draw[color=blue,thick, scale=.5] plot[smooth,tension=0.5] coordinates {#2};
 \end{tikzpicture}}
+
 \begin{document}
 
 

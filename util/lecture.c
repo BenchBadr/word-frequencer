@@ -2,7 +2,7 @@
 #include "includes/gererMem.h"
 
 
-void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, void * adr, char * mot), void * adr) {
+void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, void * adr, char * mot, int latex), void * adr, int latex, int min_length) {
     char buffer[128];
     int word_length = 0;
     // int word_count = 0;
@@ -17,7 +17,7 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
 
             if (is_a_word && word_length > 0) {
                 buffer[word_length] = '\0';
-                func(infoMem, adr, buffer);
+                if (word_length >= min_length) func(infoMem, adr, buffer, latex);
                 infoMem->nbMots++;
             }
 
@@ -28,7 +28,7 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
         } else if ((c < 'A' || c > 'z')) {
             if (is_a_word && word_length > 0) {
             buffer[word_length] = '\0';
-            func(infoMem, adr, buffer);
+            if (word_length >= min_length) func(infoMem, adr, buffer, latex);
             infoMem->nbMots++;
             }
             word_length = 0;
@@ -47,7 +47,7 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
     if (word_length > 1 && is_a_word) {
         word_length++;
         buffer[word_length] = '\0';
-        func(infoMem, adr, buffer);
+        if (word_length >= min_length) func(infoMem, adr, buffer, latex);
         infoMem->nbMots++;
     }
 
@@ -57,7 +57,7 @@ void lecture(InfoMem * infoMem, FILE * fichier, void (func)(InfoMem * infoMem, v
 FILE * lecture_fichier(char * path) {
     FILE * fichier = fopen(path, "r");
     if (!fichier) {
-        fprintf(stderr, "Erreur de lecture du fichier!\n");
+        fprintf(stderr, "Erreur de lecture du fichier (%s)!\n", path);
         return NULL;
     }
     return fichier;

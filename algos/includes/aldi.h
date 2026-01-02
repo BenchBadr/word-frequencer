@@ -11,8 +11,8 @@ typedef struct lc {
     int occ;
 } Cellule, * Liste;
 
-void addToListe(InfoMem * infoMem, Liste * liste, char * mot);
-void fusionAldi(InfoMem * infoMem, Liste liste);
+void addToListe(InfoMem * infoMem, Liste * liste, char * mot, int latex);
+void fusionAldi(InfoMem * infoMem, Liste liste, FILE *file, int latex);
 Cellule * initCellule(InfoMem * infoMem);
 
 #endif

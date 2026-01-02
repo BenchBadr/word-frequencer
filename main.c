@@ -3,18 +3,20 @@
 #include <time.h>
 #include "algos/includes/adt.h" 
 #include "algos/includes/aldi.h" 
+// #include "algos/includes/bogus.h" 
 
 #include "util/includes/lecture.h" 
 #include "util/includes/gererMem.h" 
+#include <string.h>
 
 /*
+1 : BOGUS
+2 : ALDI
 3 : ADT
+4 : HASH
 */
 
-#ifndef APPROCHE
-    #define APPROCHE 3
-#endif
-
+#define MAX_FILES 5
 
 
 
@@ -33,21 +35,32 @@ double getElapsed(clock_t start) {
     return elapsed;
 }
 
-void stats(InfoMem infoMem) {
-    printf("\\newpage \\ \\section{Statistiques d'exécution}\n\n\\begin{itemize}\n");
-    printf("\\item Mémoire totale allouée : %zu octets\n", infoMem.cumul_alloc);
-    printf("\\item Mémoire totale désallouée : %zu octets\n", infoMem.cumul_desalloc);
-    printf("\\item Pic d'allocations : %zu octets\n", infoMem.max_alloc);
-    printf("\\item Nombre de mots distincts : %d mots\n", infoMem.nbMotsDist);
-    printf("\\item Nombre de mots traités : %d mots\n", infoMem.nbMots);
+void stats(InfoMem infoMem, int latex) {
 
+    char * pref = latex ? "\\item" : "- ";
 
-    printf("\\item Temps d'exécution : %f secondes\n", getElapsed(infoMem.start));
-    printf("\\begin{itemize}\\item \\textit{NB : Performances dégradée par la génération du visuel et les affichages l'accompagnant.}\\end{itemize}");
-    printf("\\end{itemize}\n");
+    if (latex) {
+        printf("\\newpage \\ \\section{Statistiques d'exécution}\n\n\\begin{itemize}\n");
+    } else {
+        repeat('-', 50);
+        printf("# Statistiques d'exécution\n\n");
+    }
+    printf("%s Mémoire totale allouée : %zu octets\n", pref, infoMem.cumul_alloc);
+    printf("%s Mémoire totale désallouée : %zu octets\n", pref, infoMem.cumul_desalloc);
+    printf("%s Pic d'allocations : %zu octets\n", pref, infoMem.max_alloc);
+    printf("%s Nombre de mots distincts : %d mots\n", pref, infoMem.nbMotsDist);
+    printf("%s Nombre de mots traités : %d mots\n", pref, infoMem.nbMots);
+
+    printf("%s Temps d'exécution : %f secondes\n", pref, getElapsed(infoMem.start));
+    if (latex) {
+        printf("\\begin{itemize}\\item \\textit{NB : Performances dégradée par la génération du visuel et les affichages l'accompagnant.}\\end{itemize}");
+        printf("\\end{itemize}\n");
+    } else {
+        printf("\t NB : Performances dégradée par la génération du visuel et les affichages l'accompagnant\n");
+    }
 }
 
-void grapher(int dim, int option) {
+void grapher(int dim, int option, int approche, int min_lettre) {
     /*
     Dim : grille
     Option :
@@ -55,35 +68,42 @@ void grapher(int dim, int option) {
         1 : Memoire / mots
     */
     FILE *fichier = lecture_fichier("data/sample.txt");
+    FILE *out = fopen("data/.tests.txt", "w");
+    int latex = 0;
 
-
-    printf("\\newpage\n\\ \n");
-    printf("\\chart{%d}{",dim);
+    printf("\\vspace{3cm}\n\\ \n");
+    printf("\\chart{%d}{(0,0) ",dim);
 
     int ratioer;
     int nbMots;
 
     for (int i = 0; i < dim + 1; i++) {
 
-        // pour l'adt
-        Tree adr = NULL;
         InfoMem infoMem = {0, 0, clock(), 0, 0}; 
+        Tree adr;
+
+        if (approche == 3 || approche == 2) {
+            adr = NULL;
+        }
+        if (approche == 1) {
+            // BogusArray *arr = initBogusArray(&infoMem, fichier);
+        }
         for (int j = 0; j <= i; j++) { 
 
-            if (APPROCHE == 3) {
-                lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToTree, &adr);
+            if (approche == 3) {
+                lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *, int))addToTree, &adr, latex, min_lettre);
             }
-            if (APPROCHE == 2) {
-                lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToListe, &adr);
+            if (approche == 2) {
+                lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *, int))addToListe, &adr, latex, min_lettre);
             }
             rewind(fichier);
         }
 
-        if (APPROCHE == 3) {
-            writeTree(adr, &infoMem); 
+        if (approche == 3) {
+            writeTree(adr, &infoMem, out); 
         }
-        if (APPROCHE == 2) {
-            fusionAldi(&infoMem, (Liste) adr);
+        if (approche == 2) {
+            fusionAldi(&infoMem, (Liste) adr, out, latex);
         }
         if (i == 0) {
             ratioer = infoMem.max_alloc;
@@ -114,32 +134,157 @@ void afficher(InfoMem * infoMem, void * adr, char * mot) {
 
 int main(int argc, char * argv[]) {
 
-    // grapher(5, 0);
-    // grapher(5, 1);
+    /*
+    1. Lectures des arguments
+    */
 
-    // return;
+    int approche = 3;
+    int latex = 0;
+    char * sortie_path = "sorties/out.txt";
+    char * entrees[MAX_FILES];
+    int curs_ent = 0;
 
-    InfoMem infoMem = {0,0, clock(), 0, 0};
-    FILE *fichier = lecture_fichier("data/hittites.txt");
+    int graph = 0;
+
+    int min_lettre = 1;
 
 
-    if (APPROCHE == 2) {
-        printf("\\section{Approche : ALDI}\n\n\n");
-        Liste liste = NULL;
+    // TODO : Remplacer par des switch cases
+    for (int i = 0; i < argc; i++) {
+        if (strcmp(argv[i], "-a") == 0 && i + 1 < argc) {
+            if (strcmp("bogus",argv[i+1]) == 0) {
+                approche = 1;
+            } else if (strcmp("aldi",argv[i+1]) == 0) {
+                approche = 2;
+            } else if (strcmp("adt",argv[i+1]) == 0) {
+                approche = 3;
+            } else if (strcmp("hash",argv[i+1]) == 0) {
+                approche = 4;
+            } else {
+                printf("Error: chosen algorithm unrecognized. \nType `help` to learn more.\n");
+                return 1;
+            }
 
-        lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToListe, &liste);
+            i++;
+            continue;
+        }
 
-        fusionAldi(&infoMem, liste);
-    } 
+        if (strcmp(argv[i], "-help") == 0) {
+            repeat('=', 100);
 
-    if (APPROCHE == 3) {
-        printf("\\section{Approche : ADT}\n\n\n");
-        Tree arbre = NULL;
-        lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *))addToTree, &arbre);
+            printf("Options (and corresponding environment variables):\n");
 
-        writeTree(arbre, &infoMem);
+            // option -a / Algos
+            printf("-a\t : Algorithm choice. Please refer to `rapport.pdf` to learn more about each. \n \t   Valid options : `bogus`, `aldi`, `adt`, `hash`\n\t   Default : `adt`\n");
 
+            
+            // option -out
+            printf("-out\t : Specify produced text output file. Default : `sorties/out.txt`\n\t.\n");
+            
+            // option -l 
+            printf("-l\t : Latex mode. Produces debugging utility written in `examples/tests/out.tex`.\n\t   Default : unset\n");
+
+            // option -g
+            printf("-g\t : Create a graph of the execution (such as shown in `examples/chart.tex`). Will return both curve for time evolution and memory usage evolution.\n");
+
+            // option -ml
+            printf("-ml\t : Specify the minimum of letters per word to be considered. (default : 1)\n");
+
+            // option -help
+            printf("-help\t : Learn more about the options.\n");
+
+            // entree
+            printf("Files\t : Specify path of the input files. Max : %d\n\t   Default : `data/hittites.txt`\n", MAX_FILES);
+
+            repeat('=', 100);
+            
+            continue;
+        }
+
+        if (strcmp(argv[i], "-l") == 0) {
+            latex = 1;
+            continue;
+        }
+
+        if (strcmp(argv[i], "-g") == 0) {
+            graph = 1;
+            continue;
+        }
+        
+        if (strcmp(argv[i], "-out") == 0 && i + 1 < argc) {
+            sortie_path = argv[i+1];
+
+            i++;
+            continue;
+        }
+
+        if (strcmp(argv[i], "-ml") == 0 && i + 1 < argc) {
+            min_lettre = atoi(argv[i+1]);
+
+            i++;
+            continue;
+        }
+
+        // lecture fichier
+        if (i) {
+            entrees[curs_ent] = argv[i];
+            curs_ent++;
+        }
     }
 
-    stats(infoMem);
+
+    if (!curs_ent) {
+        entrees[0] = "data/hittites.txt";
+        curs_ent++;
+    }
+
+    if (graph) {
+        printf("\\section{Rendement}\n");
+        printf("\\textbf{Courbe d'évolution du temps d'exécution}\n");
+        grapher(10, 0, approche, min_lettre);
+
+        printf("\\textbf{Courbe d'évolution de l'utilisation de la mémoire}\n");
+        grapher(10, 1, approche, min_lettre);
+        return 0;
+    }
+
+    char * pref = !latex ? "#" : "\\section{";
+    char * suff = !latex ? "" : "}";
+
+    for (int i = 0; i < curs_ent; i++) {
+        if (!entrees[i]) return 1;
+        InfoMem infoMem = {0,0, clock(), 0, 0};
+
+        if (!latex) {
+            repeat('-', 50);
+            printf("Fichier : %s \n\n", entrees[i]);
+        }
+        FILE *fichier = lecture_fichier(entrees[i]);
+        FILE *sortie = fopen(sortie_path, "w");
+
+        if (approche == 1) {
+            printf("%s Approche : Bogus%s\n\n\n", pref, suff);
+        //     BogusArray *arr = initBogusArray(&infoMem, fichier);
+        }
+
+        if (approche == 2) {
+            printf("%s Approche : ALDI%s\n\n\n", pref, suff);
+            Liste liste = NULL;
+
+            lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *, int))addToListe, &liste, latex, min_lettre);
+
+            fusionAldi(&infoMem, liste, sortie, latex);
+        } 
+
+        if (approche == 3) {
+            printf("%s Approche : ADT%s\n\n\n", pref, suff);
+            Tree arbre = NULL;
+            lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *, int))addToTree, &arbre, latex, min_lettre);
+
+            writeTree(arbre, &infoMem, sortie);
+
+        }
+
+        stats(infoMem, latex);
+    }   
 }

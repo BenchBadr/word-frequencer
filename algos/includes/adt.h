@@ -14,10 +14,10 @@ typedef struct _node {
     char * mot;
 } Node, * Tree;
 
-void addToTree(InfoMem * infoMem, Tree * arbre, char * mot);
+void addToTree(InfoMem * infoMem, Tree * arbre, char * mot, int latex);
 Node * initNode(InfoMem * infoMem);
 void dispTree(Tree arbre, int maxDepth, char * mot);
 
-void writeTree(Tree arbre, InfoMem * infoMem);
+void writeTree(Tree arbre, InfoMem * infoMem, FILE *file);
 
 #endif

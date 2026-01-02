@@ -4,9 +4,6 @@
 #include "../util/includes/gererMem.h"
 #include "includes/aldi.h"
 
-#ifndef LATEX_MODE
-    #define LATEX_MODE 0
-#endif
 
 
 // Distance simple - À remplacer par Levenstein ultérieurement
@@ -53,8 +50,8 @@ void drawListeLin(Liste liste, float scale) {
     printf("\n\\end{center}\\end{tcolorbox}\n");
 }
 
-void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
-    if (LATEX_MODE) {
+void addToListe(InfoMem * infoMem, Liste * liste, char * mot, int latex) {
+    if (latex) {
         printf("\\section{« %s »}\n", mot);
         printf("\\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]\\begin{center}\n");
     }
@@ -67,7 +64,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
         (*liste)->suiv = (*liste);
         (*liste)->preced = (*liste);
 
-        if (LATEX_MODE) {
+        if (latex) {
             printf("\\infbox{Init: \\textbf{« %s »}} \n", mot);
             drawListe(*liste);
             printf("\n\\end{center}\\end{tcolorbox}\n\\newpage\n");
@@ -80,7 +77,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
     // 2.1 : plus petit que la tete -> mettre a jour tete + l'adresse initiale
 
     if (strcmp(mot, (*liste)->mot) < 0) {
-        if (LATEX_MODE) printf("\\chbox{Création de nœud en tête (avant « %s »)} \n", (*liste)->mot);
+        if (latex) printf("\\chbox{Création de nœud en tête (avant « %s »)} \n", (*liste)->mot);
         
         Cellule * nptr = initCellule(infoMem);
         nptr->mot = myMalloc(sizeof(char) * strlen(mot) + 1, infoMem);
@@ -93,7 +90,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
         (*liste)->preced = nptr;
         
         *liste = nptr; 
-        if (LATEX_MODE) { 
+        if (latex) { 
             drawListe(*liste); 
             printf("\n\\end{center}\\end{tcolorbox}\n\\newpage\n"); 
         }
@@ -104,7 +101,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
 
     // 2.2 : plus grand que la fin -> creer un noeud a la fin
     if (strcmp(mot, fin->mot) > 0) {
-        if (LATEX_MODE) printf("\\chbox{Création de nœud en fin (après « %s »)} \n", fin->mot);
+        if (latex) printf("\\chbox{Création de nœud en fin (après « %s »)} \n", fin->mot);
         
         Cellule * nptr = initCellule(infoMem);
         nptr->mot = myMalloc(sizeof(char) * strlen(mot) + 1, infoMem);
@@ -115,7 +112,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
         fin->suiv = nptr;
         (*liste)->preced = nptr;
         
-        if (LATEX_MODE) { 
+        if (latex) { 
             drawListe(*liste); 
             printf("\n\\end{center}\\end{tcolorbox}\n\\newpage\n"); 
         }
@@ -142,7 +139,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
     if (direction == 1) {
         // Recherche en sens direct (sens horaire)
         c = *liste;
-        if(LATEX_MODE) printf("\\infbox{$(\\rightarrow)$ Recherche sens horaire (depuis %s)}\n", c->mot);
+        if(latex) printf("\\infbox{$(\\rightarrow)$ Recherche sens horaire (depuis %s)}\n", c->mot);
         
         while (c->suiv != *liste && strcmp(c->suiv->mot, mot) <= 0) {
             c = c->suiv;
@@ -151,7 +148,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
         // Recherche en sens indrect (anti-horaire)
 
         c = fin;
-        if(LATEX_MODE) printf("\\infbox{$(\\leftarrow)$ Recherche sens Anti-Horaire (depuis %s)}\n", c->mot);
+        if(latex) printf("\\infbox{$(\\leftarrow)$ Recherche sens Anti-Horaire (depuis %s)}\n", c->mot);
         
         while (c != *liste && strcmp(c->mot, mot) > 0) {
             c = c->preced;
@@ -173,12 +170,12 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
     
     // 4.1 - Cas d'egalité
     if (strcmp(c->mot, mot) == 0) {
-        if (LATEX_MODE) printf("\\infbox{Incrémentation} \n");
+        if (latex) printf("\\infbox{Incrémentation} \n");
         c->occ++;
 
     // Cas 4.2 - Insertion après
     } else {
-        if (LATEX_MODE) printf("\\chbox{Insertion milieu (après « %s »)} \n", c->mot);
+        if (latex) printf("\\chbox{Insertion milieu (après « %s »)} \n", c->mot);
         
         Cellule * nptr = initCellule(infoMem);
         nptr->mot = myMalloc(sizeof(char) * strlen(mot) + 1, infoMem);
@@ -191,7 +188,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot) {
         c->suiv = nptr;
     }
 
-    if (LATEX_MODE) {
+    if (latex) {
         drawListe(*liste);
         printf("\n\\end{center}\\end{tcolorbox}\n\\newpage\n");
     };
@@ -220,7 +217,7 @@ void split(Liste source, Liste *part1, Liste *part2) {
     }
 }
 
-Liste fusionne(Liste a, Liste b) {
+static Liste fusionne(Liste a, Liste b, int latex) {
     // cas triviaux
     if (!a) return b;
     if (!b) return a;
@@ -259,7 +256,7 @@ Liste fusionne(Liste a, Liste b) {
         b->preced = curseur;
     }
 
-    if (LATEX_MODE) {
+    if (latex) {
         printf("\\subsubsection{Fusion}\n");
         drawListeLin(resultat, 1);
     }
@@ -267,7 +264,7 @@ Liste fusionne(Liste a, Liste b) {
 }
 
 
-Liste executerTriFusion(Liste liste) {
+static Liste executerTriFusion(Liste liste, int latex) {
     // Cas trivial
     if (!liste || !liste->suiv) {
         return liste;
@@ -276,7 +273,7 @@ Liste executerTriFusion(Liste liste) {
     Liste a = NULL;
     Liste b = NULL;
 
-    if (LATEX_MODE) {
+    if (latex) {
         printf("\\subsection{Lancement d'une étape}\n");
         printf("\\subsubsection{Séparation}\n");
         printf("\\noindent\n");
@@ -287,7 +284,7 @@ Liste executerTriFusion(Liste liste) {
     // on casse la liste
     split(liste, &a, &b);
 
-    if (LATEX_MODE) {
+    if (latex) {
 
         
         printf("\\noindent\\begin{minipage}{0.5\\textwidth}\\centering\n");
@@ -302,26 +299,24 @@ Liste executerTriFusion(Liste liste) {
     }
 
     // on trie recursivement chaque moitié
-    a = executerTriFusion(a);
-    b = executerTriFusion(b);
+    a = executerTriFusion(a, latex);
+    b = executerTriFusion(b, latex);
 
 
     // on fusionne
-    return fusionne(a, b);
+    return fusionne(a, b, latex);
 }
 
 
-void fusionAldi(InfoMem * infoMem, Liste liste) {
+void fusionAldi(InfoMem * infoMem, Liste liste, FILE *file, int latex) {
 
-
-    FILE *file = fopen("out.txt", "w");
 
     // 0. Traitement cas trivial.
     if (!file || !liste || liste->suiv == liste) {
         return; 
     }
 
-    if (LATEX_MODE) {
+    if (latex) {
         printf("\\begin{titlepage}\n");
         printf("    \\centering\n\n");
         printf("    \\vspace*{\\fill}\n\n");
@@ -339,18 +334,18 @@ void fusionAldi(InfoMem * infoMem, Liste liste) {
     liste->preced->suiv = NULL;
     liste->preced = NULL;
 
-    if (LATEX_MODE) {
+    if (latex) {
         printf("\\section{Première étape : Casser la circularité}\n");
         drawListeLin(liste, 1);
     }
 
 
     // 2. Coeur du tri
-    if (LATEX_MODE) {
+    if (latex) {
         printf("\\section{Deuxième étape : Tout casser}\n");
     }
 
-    liste = executerTriFusion(liste);
+    liste = executerTriFusion(liste, latex);
 
     // 3. Re-circularisation (inutile si ce n'est pour l'affichage mais gratuite avec le parcours)
     Cellule *dernier = liste;
@@ -361,7 +356,7 @@ void fusionAldi(InfoMem * infoMem, Liste liste) {
     dernier->suiv = liste;
     liste->preced = dernier;
 
-    if (LATEX_MODE) {
+    if (latex) {
         printf("\\newpage\\section{Résultat Final recircularisé}\n");
 
         printf("\\begin{center}\n");

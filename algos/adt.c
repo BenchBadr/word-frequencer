@@ -2,10 +2,6 @@
 #include <string.h>
 #include "../util/includes/gererMem.h"
 
-#ifndef LATEX_MODE
-    #define LATEX_MODE 0
-#endif
-
 
 
 Tree initNode(InfoMem * infoMem) {
@@ -85,12 +81,12 @@ void saisonLegacy(Tree * arbre, Tree t)
 }
 
 
-void saison(Tree * arbre, Tree t) {
+void saison(Tree * arbre, Tree t, int latex) {
     // pour tester : naviguer entre les pages des saisons
     int page = 0;
     while (t->parent && t->occ > t->parent->occ) {
         // Affichage
-        if (LATEX_MODE) {
+        if (latex) {
             printf("\\chbox{\n");
             printf("Saison : \n");
             printf("\\textbf{« %s » (%d)} ", t->mot, t->occ);
@@ -124,12 +120,12 @@ void saison(Tree * arbre, Tree t) {
     }
 }
 
-void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
+void addToTree(InfoMem * infoMem, Tree * arbre, char * mot, int latex) {
     // printf("Mot : %s\n", mot);
     Tree * t = arbre;
     Node * par = NULL; // pour stocker le parent
 
-    if (LATEX_MODE) {
+    if (latex) {
         printf("\\section{« %s »}\n", mot);
         
         printf("\\begin{tcolorbox}[arc=5pt, colback=white!0, colframe=orange!50!black]\n");
@@ -155,11 +151,11 @@ void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
             (*t)->occ++;
 
             // faire une saison
-            if (LATEX_MODE) {
+            if (latex) {
                 dispTree(*arbre, 30, mot);
             }
-            saison(arbre, *t);
-            if (LATEX_MODE) {
+            saison(arbre, *t, latex);
+            if (latex) {
                 printf("\n\\end{tcolorbox}\n");
             }
 
@@ -177,7 +173,7 @@ void addToTree(InfoMem * infoMem, Tree * arbre, char * mot) {
     strcpy(copy, mot);
     (*t)->mot = copy;
     (*t)->calque = copy;
-    if (LATEX_MODE) {
+    if (latex) {
         dispTree(*arbre, 30, mot);
         printf("\n\\end{tcolorbox}");
     }
@@ -251,8 +247,7 @@ void swapIfNeeded(Tree *array, int index) {
     }
 }
 
-void writeTree(Tree arbre, InfoMem * infoMem) {
-    FILE *file = fopen("out.txt", "w");
+void writeTree(Tree arbre, InfoMem * infoMem, FILE *file) {
     if (!file || !arbre) return;
 
     // file d'attente
