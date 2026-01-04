@@ -1,8 +1,8 @@
 CC = clang
 
-CFLAGS = -Wall
+CFLAGS = -Wall -fsanitize=address -fno-omit-frame-pointer -g
 
-SRCS = main.c util/gererMem.c algos/adt.c util/lecture.c algos/aldi.c
+SRCS = main.c util/gererMem.c algos/adt.c util/lecture.c algos/aldi.c algos/bogus.c algos/hash.c
 
 OBJS = $(SRCS:.c=.o)
 

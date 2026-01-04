@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1767287156.68101 "/Users/arl/prog/eiffel/TP Infos/word-frequencer/examples/chart.tex" "chart.pdf" "chart" 1767287157.37 2
-  "/Users/arl/prog/eiffel/TP Infos/word-frequencer/examples/chart.tex" 1767287155.6421 875 14646296876427fcc863ab119f8b5fc8 ""
+["pdflatex"] 1767378646.42378 "/Users/arl/prog/eiffel/TP Infos/word-frequencer/examples/chart.tex" "chart.pdf" "chart" 1767378647.01213 2
+  "/Users/arl/prog/eiffel/TP Infos/word-frequencer/examples/chart.tex" 1767378646.0949 972 c3271e8324ba7ebc8258f15c22be656b ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -98,8 +98,8 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1753046818 3345739 41a5509a1a1eaf5280e9e0632e80e573 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "chart.aux" 1767287157.23841 184 c8fa024dc027b08a750f3e8d556bc925 "pdflatex"
-  "chart.tex" 1767287155.6421 875 14646296876427fcc863ab119f8b5fc8 ""
+  "chart.aux" 1767378646.9001 184 c8fa024dc027b08a750f3e8d556bc925 "pdflatex"
+  "chart.tex" 1767378646.0949 972 c3271e8324ba7ebc8258f15c22be656b ""
   (generated)
   "chart.aux"
   "chart.log"

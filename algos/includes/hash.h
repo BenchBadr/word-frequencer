@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 #include <string.h>
-#include "../util/includes/gererMem.h"
+#include <stdio.h>
+#include "../../util/includes/gererMem.h"
 
 #define FNV_OFFSET 14695981039346656037UL
 #define FNV_PRIME 1099511628211UL
@@ -16,7 +17,7 @@ typedef struct cell {
     struct cell *suiv;
     char * mot;
     int occ;
-} Cell, *Liste;
+} Cell, *ColliGroupe;
 
 typedef struct {
     Cell ** adrs;
@@ -24,5 +25,8 @@ typedef struct {
 } Tableau;
 
 Tableau initTableau(InfoMem * infoMem);
+void pushTableau(InfoMem * infoMem, Tableau * tableau, char * mot, int latex);
+void fusionHash(Tableau *tableau, FILE *fichier);
+
 
 #endif

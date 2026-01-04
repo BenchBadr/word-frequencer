@@ -3,7 +3,8 @@
 #include <time.h>
 #include "algos/includes/adt.h" 
 #include "algos/includes/aldi.h" 
-// #include "algos/includes/bogus.h" 
+#include "algos/includes/bogus.h" 
+#include "algos/includes/hash.h" 
 
 #include "util/includes/lecture.h" 
 #include "util/includes/gererMem.h" 
@@ -17,6 +18,8 @@
 */
 
 #define MAX_FILES 5
+
+#define BASE_CAPACITY 20000
 
 
 
@@ -67,7 +70,7 @@ void grapher(int dim, int option, int approche, int min_lettre) {
         0 : Temps / mots
         1 : Memoire / mots
     */
-    FILE *fichier = lecture_fichier("data/sample.txt");
+    FILE *fichier = lecture_fichier("data/ubu-roi.txt");
     FILE *out = fopen("data/.tests.txt", "w");
     int latex = 0;
 
@@ -79,14 +82,14 @@ void grapher(int dim, int option, int approche, int min_lettre) {
 
     for (int i = 0; i < dim + 1; i++) {
 
-        InfoMem infoMem = {0, 0, clock(), 0, 0}; 
-        Tree adr;
+        InfoMem infoMem = {0, 0, 0, clock(), 0}; 
+        void *adr;
 
         if (approche == 3 || approche == 2) {
             adr = NULL;
         }
         if (approche == 1) {
-            // BogusArray *arr = initBogusArray(&infoMem, fichier);
+            adr = initBogus(&infoMem, fichier);
         }
         for (int j = 0; j <= i; j++) { 
 
@@ -96,14 +99,20 @@ void grapher(int dim, int option, int approche, int min_lettre) {
             if (approche == 2) {
                 lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *, int))addToListe, &adr, latex, min_lettre);
             }
+            if (approche == 1) {
+                lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *, int))addToBogus, adr, latex, min_lettre);
+            }
             rewind(fichier);
         }
 
         if (approche == 3) {
-            writeTree(adr, &infoMem, out); 
+            writeTree((Tree)adr, &infoMem, out); 
         }
         if (approche == 2) {
-            fusionAldi(&infoMem, (Liste) adr, out, latex);
+            fusionAldi(&infoMem, (Liste)adr, out, latex);
+        }
+        if (approche == 1) {
+            bulles_and_write((Bogus *)adr, out);
         }
         if (i == 0) {
             ratioer = infoMem.max_alloc;
@@ -241,7 +250,7 @@ int main(int argc, char * argv[]) {
     if (graph) {
         printf("\\section{Rendement}\n");
         printf("\\textbf{Courbe d'évolution du temps d'exécution}\n");
-        grapher(10, 0, approche, min_lettre);
+        grapher(50, 0, approche, min_lettre);
 
         printf("\\textbf{Courbe d'évolution de l'utilisation de la mémoire}\n");
         grapher(10, 1, approche, min_lettre);
@@ -253,7 +262,7 @@ int main(int argc, char * argv[]) {
 
     for (int i = 0; i < curs_ent; i++) {
         if (!entrees[i]) return 1;
-        InfoMem infoMem = {0,0, clock(), 0, 0};
+        InfoMem infoMem = {0,0, 0, clock(), 0};
 
         if (!latex) {
             repeat('-', 50);
@@ -264,7 +273,11 @@ int main(int argc, char * argv[]) {
 
         if (approche == 1) {
             printf("%s Approche : Bogus%s\n\n\n", pref, suff);
-        //     BogusArray *arr = initBogusArray(&infoMem, fichier);
+            Bogus *bogus = initBogus(&infoMem, fichier);
+
+            lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *, int))addToBogus, bogus, latex, min_lettre);
+
+            bulles_and_write(bogus, sortie);
         }
 
         if (approche == 2) {
@@ -283,6 +296,12 @@ int main(int argc, char * argv[]) {
 
             writeTree(arbre, &infoMem, sortie);
 
+        }
+        if (approche == 4) {
+            printf("%s Approche : HASH%s\n\n\n", pref, suff);
+            Tableau bucket = initTableau(&infoMem);
+            lecture(&infoMem, fichier, (void (*)(InfoMem *, void *, char *, int))pushTableau, &bucket, latex, min_lettre);
+            fusionHash(&bucket, sortie);
         }
 
         stats(infoMem, latex);

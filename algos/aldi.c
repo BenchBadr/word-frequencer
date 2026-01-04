@@ -6,7 +6,7 @@
 
 
 
-// Distance simple - À remplacer par Levenstein ultérieurement
+// Distance naif - À remplacer par Levenstein ultérieurement
 int distance(const char *s1, const char *s2){
     return (s1[0] > s2[0]) ? (s1[0] - s2[0]) : (s2[0] - s1[0]);
 }
@@ -197,7 +197,7 @@ void addToListe(InfoMem * infoMem, Liste * liste, char * mot, int latex) {
 
 
 
-void split(Liste source, Liste *part1, Liste *part2) {
+static void split(Liste source, Liste *part1, Liste *part2) {
     Cellule *tortue = source;
     Cellule *lievre = source;
 

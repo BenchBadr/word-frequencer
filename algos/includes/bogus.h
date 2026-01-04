@@ -4,21 +4,19 @@
 #include <stdio.h>
 #include "../../util/includes/gererMem.h"
 
-typedef struct {
-    char * mot;
+typedef struct Mot {
+    char *mot;
     int occ;
-} BogusCell;
+} Mot;
 
-typedef struct {
-    BogusCell *entries;
-    int count;
+typedef struct bogus {
+    Mot ** elements;
+    int nb_mots;
     int capacity;
-} BogusArray;
+} Bogus;
 
-BogusArray* initBogusArray(InfoMem *infoMem, FILE fichier);
-void addToBogus(BogusArray *arr, char *mot, InfoMem *infoMem);
-void bubbleSort(BogusArray *arr);
-void writeBogus(BogusArray *arr);
-void freeBogus(BogusArray *arr, InfoMem *infoMem);
+Bogus * initBogus(InfoMem * infoMem, FILE *fichier);
+void addToBogus(InfoMem *infoMem, Bogus *bogus, char *mot, int latex);
+void bulles_and_write(Bogus *bogus, FILE *fichier);
 
 #endif
